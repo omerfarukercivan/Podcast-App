@@ -16,25 +16,12 @@ class PodcastCell: UITableViewCell {
     
     var podcast: Podcast! {
         didSet {
+            guard let url = URL(string: podcast.artworkUrl600?.toSecureHTTPS() ?? "") else { return }
+            
             trackNameLabel.text = podcast.trackName
             artistNameLabel.text = podcast.artistName
             episodeCountLabel.text = "\(podcast.trackCount ?? 0) Episodes"
-            
-//            print("image:", podcast.artworkUrl600 ?? "")
-            
-            guard let url = URL(string: podcast.artworkUrl600 ?? "") else { return }
-            
-//            URLSession.shared.dataTask(with: url) { data, _, _ in
-///               print("data: ", data)
-//                guard let data = data else { return }
-//
-//                DispatchQueue.main.async {
-//                    self.podcastImageView.image = UIImage(data: data)
-//                }
-//
-//            }.resume()
-            
-            podcastImageView.sd_setImage(with: url, completed: nil)
+            podcastImageView.sd_setImage(with: url)
         }
     }
 }

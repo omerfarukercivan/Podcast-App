@@ -7,10 +7,10 @@
 
 import Foundation
 import Alamofire
+import FeedKit
 
 class APIService {
     static let shared = APIService()
-    
     let baseiTunesSearchUrl = "https://itunes.apple.com/search"
     
     func fetchPodcasts(searchText: String, completionHandler: @escaping ([Podcast]) -> ()) {
@@ -34,8 +34,27 @@ class APIService {
         }
     }
     
-    struct SearchResult: Decodable {
-        let resultCount: Int
-        let results: [Podcast]
+    func fetchEpisodes(feedUrl: String, completionHandler: @escaping ([Episode]) -> ()) {
+        guard let url = URL(string: feedUrl.toSecureHTTPS()) else { return }
+        let parser = FeedParser(URL: url)
+    
+        parser.parseAsync { result in
+            switch result {
+            case .success(let feed):
+                switch feed {
+                case let .rss(feed):
+                    let episodes = feed.toEpisodes()
+                    completionHandler(episodes)
+                    break
+                case .atom(_):
+                    break
+                case .json(_):
+                    break
+                }
+            case .failure(let error):
+                print("Failed to parse feed: ", error)
+                break
+            }
+        }
     }
 }
