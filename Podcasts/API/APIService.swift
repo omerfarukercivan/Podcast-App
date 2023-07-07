@@ -36,24 +36,27 @@ class APIService {
     
     func fetchEpisodes(feedUrl: String, completionHandler: @escaping ([Episode]) -> ()) {
         guard let url = URL(string: feedUrl.toSecureHTTPS()) else { return }
-        let parser = FeedParser(URL: url)
-    
-        parser.parseAsync { result in
-            switch result {
-            case .success(let feed):
-                switch feed {
-                case let .rss(feed):
-                    let episodes = feed.toEpisodes()
-                    completionHandler(episodes)
-                    break
-                case .atom(_):
-                    break
-                case .json(_):
+        
+        DispatchQueue.global(qos: .background).async {
+            let parser = FeedParser(URL: url)
+        
+            parser.parseAsync { result in
+                switch result {
+                case .success(let feed):
+                    switch feed {
+                    case let .rss(feed):
+                        let episodes = feed.toEpisodes()
+                        completionHandler(episodes)
+                        break
+                    case .atom(_):
+                        break
+                    case .json(_):
+                        break
+                    }
+                case .failure(let error):
+                    print("Failed to parse feed: ", error)
                     break
                 }
-            case .failure(let error):
-                print("Failed to parse feed: ", error)
-                break
             }
         }
     }
