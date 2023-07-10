@@ -39,7 +39,7 @@ class APIService {
         
         DispatchQueue.global(qos: .background).async {
             let parser = FeedParser(URL: url)
-        
+            
             parser.parseAsync { result in
                 switch result {
                 case .success(let feed):
