@@ -17,6 +17,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kb9-0u-6bo">
                     <rect key="frame" x="0.0" y="59" width="393" height="64"/>
                     <subviews>
+                        <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Me8-Dk-ifI">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="0.66666666666666663"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="JwO-Re-y9H"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wzc-6a-Wvn">
                             <rect key="frame" x="8" y="8" width="377" height="48"/>
                             <subviews>
@@ -47,6 +54,9 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="fastforward15"/>
+                                    <connections>
+                                        <action selector="handleFastForward:" destination="8aw-OM-WU8" eventType="touchUpInside" id="JjH-ko-qpN"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -54,9 +64,12 @@
                     <constraints>
                         <constraint firstItem="Wzc-6a-Wvn" firstAttribute="leading" secondItem="kb9-0u-6bo" secondAttribute="leading" constant="8" id="0Fr-Ry-xrN"/>
                         <constraint firstItem="Wzc-6a-Wvn" firstAttribute="top" secondItem="kb9-0u-6bo" secondAttribute="top" constant="8" id="4Ad-S8-8js"/>
+                        <constraint firstItem="Me8-Dk-ifI" firstAttribute="top" secondItem="kb9-0u-6bo" secondAttribute="top" id="77J-cG-Dca"/>
                         <constraint firstAttribute="trailing" secondItem="Wzc-6a-Wvn" secondAttribute="trailing" constant="8" id="AMs-cz-Ub8"/>
                         <constraint firstAttribute="bottom" secondItem="Wzc-6a-Wvn" secondAttribute="bottom" constant="8" id="giP-MC-Hu3"/>
+                        <constraint firstAttribute="trailing" secondItem="Me8-Dk-ifI" secondAttribute="trailing" id="ieC-ZT-adZ"/>
                         <constraint firstAttribute="height" constant="64" id="jfK-7a-DJY"/>
+                        <constraint firstItem="Me8-Dk-ifI" firstAttribute="leading" secondItem="kb9-0u-6bo" secondAttribute="leading" id="r6o-Z3-lzF"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="idN-mB-oYX">
@@ -235,7 +248,6 @@
                 <outlet property="episodeImageView" destination="Fs8-lh-czo" id="bsU-Uw-asJ"/>
                 <outlet property="maximizedStackView" destination="idN-mB-oYX" id="dgA-BM-nkc"/>
                 <outlet property="miniEpisodeImageView" destination="NiR-qU-iP8" id="Zui-sA-YLe"/>
-                <outlet property="miniFastForwardButton" destination="KqK-zY-piM" id="Fuw-1I-CYu"/>
                 <outlet property="miniPlayPauseButton" destination="y5u-El-bVv" id="2SJ-Lq-WOn"/>
                 <outlet property="miniPlayerView" destination="kb9-0u-6bo" id="S4a-oh-Eey"/>
                 <outlet property="miniTitleLabel" destination="gC3-2r-fgp" id="99G-pf-ejO"/>

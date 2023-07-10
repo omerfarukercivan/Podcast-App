@@ -11,6 +11,7 @@ class MainTabBarController: UITabBarController {
     let playerDetailsView = PlayerDetailsView.initFromNib()
     var maximizedTopAnchorConstraint: NSLayoutConstraint!
     var minimizedTopAnchorConstraint: NSLayoutConstraint!
+    var bottomAnchortConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +37,13 @@ class MainTabBarController: UITabBarController {
         
         maximizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
         minimizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
+        bottomAnchortConstraint = playerDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: view.frame.height)
+        
         playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        playerDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         maximizedTopAnchorConstraint.isActive = true
+        bottomAnchortConstraint.isActive = true
     }
     
     fileprivate func generateNavigationController(for rootViewController: UIViewController, title: String, image: String) -> UIViewController {
@@ -55,7 +58,9 @@ class MainTabBarController: UITabBarController {
     
     func minimizePlayerDetails() {
         maximizedTopAnchorConstraint.isActive = false
+        bottomAnchortConstraint.constant = view.frame.height
         minimizedTopAnchorConstraint.isActive = true
+        
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1) {
             self.view.layoutIfNeeded()
@@ -67,9 +72,10 @@ class MainTabBarController: UITabBarController {
     }
     
     func maximizePlayerDetails(episode: Episode?) {
+        minimizedTopAnchorConstraint.isActive = false
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
-        minimizedTopAnchorConstraint.isActive = false
+        bottomAnchortConstraint.constant = 0
         
         if episode != nil {
             playerDetailsView.episode = episode
