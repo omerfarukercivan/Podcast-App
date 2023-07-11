@@ -10,6 +10,7 @@ import AVKit
 import MediaPlayer
 
 class PlayerDetailsView: UIView {
+    // MARK: IBOutlet
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var currentTimeSlider: UISlider!
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -64,9 +65,12 @@ class PlayerDetailsView: UIView {
         let seekTimeInSeconds = Float64(percentage) * durationInSeconds
         let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
         
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = seekTimeInSeconds
+        
         player.seek(to: seekTime)
     }
     
+    // MARK: IBAction
     @IBAction func handleRewind(_ sender: Any) {
         seekToCurrentTime(delta: -15)
     }
@@ -96,15 +100,38 @@ class PlayerDetailsView: UIView {
             authorLabel.text = episode.author
             
             episodeImageView.sd_setImage(with: url)
-            miniEpisodeImageView.sd_setImage(with: url)
+            
+            miniEpisodeImageView.sd_setImage(with: url) { image, _, _, _ in
+                guard let image = image else { return }
+                var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
+                
+                let artwork = MPMediaItemArtwork(boundsSize: image.size) { _ -> UIImage in
+                    return image
+                }
+                
+                nowPlayingInfo?[MPMediaItemPropertyArtwork] = artwork
+                
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+            }
             
             playEpisode()
+            setupNowPlayingInfo()
         }
     }
     
     var panGesture: UIPanGestureRecognizer!
+    var playlistEpisodes = [Episode]()
     
     // MARK: FUNC
+    fileprivate func setupNowPlayingInfo() {
+        var nowPlayingInfo = [String: Any]()
+        
+        nowPlayingInfo[MPMediaItemPropertyTitle] = episode.title
+        nowPlayingInfo[MPMediaItemPropertyArtist] = episode.author
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
+    
     fileprivate func playEpisode() {
         guard let url = URL(string: episode.streamUrl) else { return }
         let playerItem = AVPlayerItem(url: url)
@@ -169,8 +196,8 @@ class PlayerDetailsView: UIView {
             self.player.play()
             self.playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
             self.miniPlayPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            self.setupElapsedTime()
             return .success
-
         }
 
         commandCenter.pauseCommand.isEnabled = true
@@ -178,23 +205,26 @@ class PlayerDetailsView: UIView {
             self.player.pause()
             self.playPauseButton.setImage(UIImage(named: "play"), for: .normal)
             self.miniPlayPauseButton.setImage(UIImage(named: "play"), for: .normal)
+            self.setupElapsedTime()
             return .success
         }
         
         commandCenter.togglePlayPauseCommand.isEnabled = true
         commandCenter.togglePlayPauseCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
             self.handlePlayPause()
-            return .success 
+            return .success
         }
+        
+        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePreviousTrack))
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        setupGestures()
-        setupRemoteControl()
-        observePlayerCurrentTime()
-        
+    fileprivate func setupElapsedTime() {
+        let elapsedTime = CMTimeGetSeconds(player.currentTime())
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
+    }
+    
+    fileprivate func extractedFunc() {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         
@@ -203,9 +233,54 @@ class PlayerDetailsView: UIView {
         }
     }
     
-    static func initFromNib() -> PlayerDetailsView {
-        return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self)?.first as! PlayerDetailsView
+    fileprivate func observeBoundaryTime() {
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            self?.enlargeEpisodeImageView()
+            self?.setupLockScreenDuration()
+        }
     }
+    
+    fileprivate func setupLockScreenDuration() {
+        guard let duration = player.currentItem?.duration else { return }
+        let durationSeconds = CMTimeGetSeconds(duration)
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSeconds
+    }
+    
+    fileprivate func changeTrack(moveForward: Bool) {
+        let offset = moveForward ? 1 : playlistEpisodes.count - 1
+        
+        if playlistEpisodes.count == 0 { return }
+        
+        let currentEpisodeIndex = playlistEpisodes.firstIndex { episode in
+            return self.episode.title == episode.title && self.episode.author == episode.author
+        }
+        guard let index = currentEpisodeIndex else {return}
+        
+        self.episode = playlistEpisodes[(index + offset) % playlistEpisodes.count]
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setupGestures()
+        setupRemoteControl()
+        observePlayerCurrentTime()
+        observeBoundaryTime()
+        extractedFunc()
+    }
+    
+    static func initFromNib() -> PlayerDetailsView {
+        return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+    }
+    
+    deinit {
+        print("PlayerDetailsView memory being reclaimed...")
+    }
+    
     
     // MARK: Selector
     @objc private func handlePlayPause() {
@@ -239,5 +314,13 @@ class PlayerDetailsView: UIView {
                 }
             }
         }
+    }
+    
+    @objc fileprivate func handlePreviousTrack() {
+        changeTrack(moveForward: false)
+    }
+    
+    @objc fileprivate func handleNextTrack() {
+        changeTrack(moveForward: true)
     }
 }
