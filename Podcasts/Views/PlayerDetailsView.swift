@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import MediaPlayer
 
 class PlayerDetailsView: UIView {
     @IBOutlet weak var authorLabel: UILabel!
@@ -159,10 +160,39 @@ class PlayerDetailsView: UIView {
         maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
     }
     
+    fileprivate func setupRemoteControl() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
+            self.player.play()
+            self.playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            self.miniPlayPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            return .success
+
+        }
+
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
+            self.player.pause()
+            self.playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+            self.miniPlayPauseButton.setImage(UIImage(named: "play"), for: .normal)
+            return .success
+        }
+        
+        commandCenter.togglePlayPauseCommand.isEnabled = true
+        commandCenter.togglePlayPauseCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
+            self.handlePlayPause()
+            return .success 
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupGestures()
+        setupRemoteControl()
         observePlayerCurrentTime()
         
         let time = CMTimeMake(value: 1, timescale: 3)

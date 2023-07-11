@@ -21,13 +21,13 @@
 		AE1009A52A545509005CBBB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1009A32A545509005CBBB0 /* LaunchScreen.storyboard */; };
 		AE1448552A5538E90036E6A3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1448542A5538E90036E6A3 /* APIService.swift */; };
 		AE1448602A559E440036E6A3 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14485F2A559E440036E6A3 /* EpisodesController.swift */; };
+		AE17D5AB2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE17D5AA2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift */; };
 		AE7D8C962A57DEE0004C6D5A /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7D8C952A57DEE0004C6D5A /* PlayerDetailsView.xib */; };
 		AE7FEDD42A57D22B00A9772D /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FEDD02A57D22B00A9772D /* PodcastCell.swift */; };
 		AE7FEDD52A57D22B00A9772D /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FEDD12A57D22B00A9772D /* EpisodeCell.swift */; };
 		AE7FEDD62A57D22B00A9772D /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7FEDD22A57D22B00A9772D /* PodcastCell.xib */; };
 		AE7FEDD72A57D22B00A9772D /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7FEDD32A57D22B00A9772D /* EpisodeCell.xib */; };
 		AE8F68F82A5849490085A95A /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8F68F72A5849490085A95A /* CMTime.swift */; };
-		AEDCE4CA2A5C5A94009FCA90 /* PlayerDetailsView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDCE4C92A5C5A94009FCA90 /* PlayerDetailsView+Gesture.swift */; };
 		AEDCE4CC2A5C604F009FCA90 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDCE4CB2A5C604F009FCA90 /* UIApplication.swift */; };
 		AEE283002A54598500A50776 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE282FF2A54598500A50776 /* MainTabBarController.swift */; };
 		AEE283032A545C5500A50776 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE283022A545C5500A50776 /* SearchController.swift */; };
@@ -52,13 +52,13 @@
 		AE1009A62A545509005CBBB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE1448542A5538E90036E6A3 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		AE14485F2A559E440036E6A3 /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		AE17D5AA2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PlayerDetailsView+Gesture.swift"; path = "Podcasts/Views/PlayerDetailsView+Gesture.swift"; sourceTree = "<group>"; };
 		AE7D8C952A57DEE0004C6D5A /* PlayerDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerDetailsView.xib; path = Podcasts/Views/PlayerDetailsView.xib; sourceTree = "<group>"; };
 		AE7FEDD02A57D22B00A9772D /* PodcastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PodcastCell.swift; path = Podcasts/Views/PodcastCell.swift; sourceTree = "<group>"; };
 		AE7FEDD12A57D22B00A9772D /* EpisodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EpisodeCell.swift; path = Podcasts/Views/EpisodeCell.swift; sourceTree = "<group>"; };
 		AE7FEDD22A57D22B00A9772D /* PodcastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PodcastCell.xib; path = Podcasts/Views/PodcastCell.xib; sourceTree = "<group>"; };
 		AE7FEDD32A57D22B00A9772D /* EpisodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EpisodeCell.xib; path = Podcasts/Views/EpisodeCell.xib; sourceTree = "<group>"; };
 		AE8F68F72A5849490085A95A /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
-		AEDCE4C92A5C5A94009FCA90 /* PlayerDetailsView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gesture.swift"; sourceTree = "<group>"; };
 		AEDCE4CB2A5C604F009FCA90 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		AEE282FF2A54598500A50776 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AEE283022A545C5500A50776 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				AE7FEDD02A57D22B00A9772D /* PodcastCell.swift */,
 				AE7FEDD22A57D22B00A9772D /* PodcastCell.xib */,
 				AE03CAC82A58808800DF6E45 /* PlayerDetailsView.swift */,
-				AEDCE4C92A5C5A94009FCA90 /* PlayerDetailsView+Gesture.swift */,
+				AE17D5AA2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift */,
 				AE7D8C952A57DEE0004C6D5A /* PlayerDetailsView.xib */,
 			);
 			name = Views;
@@ -308,10 +308,10 @@
 				AE03CAC92A58808800DF6E45 /* PlayerDetailsView.swift in Sources */,
 				AE02F8B72A55CB8B00466D5F /* SearchResult.swift in Sources */,
 				AE10099D2A545508005CBBB0 /* ViewController.swift in Sources */,
+				AE17D5AB2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift in Sources */,
 				AE1448552A5538E90036E6A3 /* APIService.swift in Sources */,
 				AE02F8C02A55E9AB00466D5F /* RSSFeed.swift in Sources */,
 				AE02F8B52A55CB2900466D5F /* Episode.swift in Sources */,
-				AEDCE4CA2A5C5A94009FCA90 /* PlayerDetailsView+Gesture.swift in Sources */,
 				AE8F68F82A5849490085A95A /* CMTime.swift in Sources */,
 				AE02F8BE2A55E79D00466D5F /* String.swift in Sources */,
 				AEE283032A545C5500A50776 /* SearchController.swift in Sources */,
