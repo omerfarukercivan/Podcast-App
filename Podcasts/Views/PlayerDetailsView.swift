@@ -226,8 +226,8 @@ class PlayerDetailsView: UIView {
             return .success
         }
         
-//        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
-//        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePreviousTrack))
+        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePreviousTrack))
     }
     
     fileprivate func setupElapsedTime(playbackRate: Float) {
@@ -335,12 +335,22 @@ class PlayerDetailsView: UIView {
         }
     }
     
-    @objc fileprivate func handlePreviousTrack() {
-        changeTrack(moveForward: false)
+//    @objc fileprivate func handlePreviousTrack() {
+//        changeTrack(moveForward: false)
+//    }
+//
+//    @objc fileprivate func handleNextTrack() {
+//        changeTrack(moveForward: true)
+//    }
+    
+    @objc func handleNextTrack(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        changeTrack(moveForward: true)
+        return .success
     }
     
-    @objc fileprivate func handleNextTrack() {
-        changeTrack(moveForward: true)
+    @objc func handlePreviousTrack(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        changeTrack(moveForward: false)
+        return .success
     }
     
     @objc fileprivate func handleInterruption(notification: Notification) {

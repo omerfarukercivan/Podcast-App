@@ -24,9 +24,12 @@ class MainTabBarController: UITabBarController {
     
     // MARK: Setup
     fileprivate func setupViewControllers() {
+        let layout = UICollectionViewFlowLayout()
+        let favoritesController = FavoritesController(collectionViewLayout: layout)
+        
         viewControllers = [
+            generateNavigationController(for: favoritesController, title: "Favorites", image: "play.circle"),
             generateNavigationController(for: SearchController(), title: "Search", image: "magnifyingglass"),
-            generateNavigationController(for: ViewController(), title: "Favorites", image: "play.circle"),
             generateNavigationController(for: ViewController(), title: "Downloads", image: "rectangle.stack.fill")
         ]
     }
