@@ -17,7 +17,6 @@ class Podcast: NSObject, Codable, NSCoding {
     }
     
     required init?(coder: NSCoder) {
-//        print("Trying to turn Date into Podcast")
         self.trackName = coder.decodeObject(forKey: "trackNameKey") as? String
         self.artistName = coder.decodeObject(forKey: "artistNameKey") as? String
         self.artworkUrl600 = coder.decodeObject(forKey: "artworkKey") as? String

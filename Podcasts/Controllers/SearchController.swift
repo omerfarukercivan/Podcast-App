@@ -41,13 +41,13 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         })
     }
     
-    // MARK: UITableView
     fileprivate func setupTableView() {
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
     }
     
+    // MARK: UITableView
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         
@@ -83,6 +83,6 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
+        return 132
     }
 }

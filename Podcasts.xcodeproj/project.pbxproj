@@ -17,14 +17,13 @@
 		AE0BEAA52A605EEE0083AEDA /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BEAA42A605EEE0083AEDA /* UserDefaults.swift */; };
 		AE1009992A545508005CBBB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1009982A545508005CBBB0 /* AppDelegate.swift */; };
 		AE10099B2A545508005CBBB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE10099A2A545508005CBBB0 /* SceneDelegate.swift */; };
-		AE10099D2A545508005CBBB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE10099C2A545508005CBBB0 /* ViewController.swift */; };
-		AE1009A02A545508005CBBB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE10099E2A545508005CBBB0 /* Main.storyboard */; };
 		AE1009A22A545509005CBBB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1009A12A545509005CBBB0 /* Assets.xcassets */; };
 		AE1009A52A545509005CBBB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1009A32A545509005CBBB0 /* LaunchScreen.storyboard */; };
 		AE1448552A5538E90036E6A3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1448542A5538E90036E6A3 /* APIService.swift */; };
 		AE1448602A559E440036E6A3 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14485F2A559E440036E6A3 /* EpisodesController.swift */; };
 		AE17D5AB2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE17D5AA2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift */; };
 		AE1BB7592A6144500017ED66 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BB7582A6144500017ED66 /* FavoritePodcastCell.swift */; };
+		AE1BB75B2A6144DD0017ED66 /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BB75A2A6144DD0017ED66 /* DownloadsController.swift */; };
 		AE7D8C962A57DEE0004C6D5A /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7D8C952A57DEE0004C6D5A /* PlayerDetailsView.xib */; };
 		AE7FEDD42A57D22B00A9772D /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FEDD02A57D22B00A9772D /* PodcastCell.swift */; };
 		AE7FEDD52A57D22B00A9772D /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FEDD12A57D22B00A9772D /* EpisodeCell.swift */; };
@@ -50,8 +49,6 @@
 		AE1009952A545508005CBBB0 /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1009982A545508005CBBB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE10099A2A545508005CBBB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AE10099C2A545508005CBBB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AE10099F2A545508005CBBB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE1009A12A545509005CBBB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE1009A42A545509005CBBB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE1009A62A545509005CBBB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +56,7 @@
 		AE14485F2A559E440036E6A3 /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AE17D5AA2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PlayerDetailsView+Gesture.swift"; path = "Podcasts/Views/PlayerDetailsView+Gesture.swift"; sourceTree = "<group>"; };
 		AE1BB7582A6144500017ED66 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritePodcastCell.swift; path = Podcasts/Views/FavoritePodcastCell.swift; sourceTree = "<group>"; };
+		AE1BB75A2A6144DD0017ED66 /* DownloadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
 		AE7D8C952A57DEE0004C6D5A /* PlayerDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerDetailsView.xib; path = Podcasts/Views/PlayerDetailsView.xib; sourceTree = "<group>"; };
 		AE7FEDD02A57D22B00A9772D /* PodcastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PodcastCell.swift; path = Podcasts/Views/PodcastCell.swift; sourceTree = "<group>"; };
 		AE7FEDD12A57D22B00A9772D /* EpisodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EpisodeCell.swift; path = Podcasts/Views/EpisodeCell.swift; sourceTree = "<group>"; };
@@ -141,9 +139,6 @@
 				AEE283012A545C4800A50776 /* Controllers */,
 				AE1009982A545508005CBBB0 /* AppDelegate.swift */,
 				AE10099A2A545508005CBBB0 /* SceneDelegate.swift */,
-				AE10099C2A545508005CBBB0 /* ViewController.swift */,
-				AEE282FF2A54598500A50776 /* MainTabBarController.swift */,
-				AE10099E2A545508005CBBB0 /* Main.storyboard */,
 				AE1009A12A545509005CBBB0 /* Assets.xcassets */,
 				AE1009A32A545509005CBBB0 /* LaunchScreen.storyboard */,
 				AE1009A62A545509005CBBB0 /* Info.plist */,
@@ -178,9 +173,11 @@
 		AEE283012A545C4800A50776 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AEE282FF2A54598500A50776 /* MainTabBarController.swift */,
 				AEE283022A545C5500A50776 /* SearchController.swift */,
 				AE14485F2A559E440036E6A3 /* EpisodesController.swift */,
 				AE0BEAA02A60320A0083AEDA /* FavoritesController.swift */,
+				AE1BB75A2A6144DD0017ED66 /* DownloadsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 				AE1009A22A545509005CBBB0 /* Assets.xcassets in Resources */,
 				AE7FEDD72A57D22B00A9772D /* EpisodeCell.xib in Resources */,
 				AE7FEDD62A57D22B00A9772D /* PodcastCell.xib in Resources */,
-				AE1009A02A545508005CBBB0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,9 +310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEDCE4CC2A5C604F009FCA90 /* UIApplication.swift in Sources */,
+				AE1BB75B2A6144DD0017ED66 /* DownloadsController.swift in Sources */,
 				AE03CAC92A58808800DF6E45 /* PlayerDetailsView.swift in Sources */,
 				AE02F8B72A55CB8B00466D5F /* SearchResult.swift in Sources */,
-				AE10099D2A545508005CBBB0 /* ViewController.swift in Sources */,
 				AE17D5AB2A5D208C004DD7C6 /* PlayerDetailsView+Gesture.swift in Sources */,
 				AE0BEAA52A605EEE0083AEDA /* UserDefaults.swift in Sources */,
 				AE1448552A5538E90036E6A3 /* APIService.swift in Sources */,
@@ -340,14 +336,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AE10099E2A545508005CBBB0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AE10099F2A545508005CBBB0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AE1009A32A545509005CBBB0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -486,7 +474,6 @@
 				INFOPLIST_FILE = Podcasts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -515,7 +502,6 @@
 				INFOPLIST_FILE = Podcasts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

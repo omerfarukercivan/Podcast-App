@@ -54,8 +54,8 @@ class EpisodesController: UITableViewController {
         }
     }
     
-    fileprivate func showBadgeHighlight() {
-        UIApplication.mainTabBarController()?.viewControllers?[0].tabBarItem.badgeValue = "New"
+    fileprivate func showBadgeHighlight(page: Int) {
+        UIApplication.mainTabBarController()?.viewControllers?[page].tabBarItem.badgeValue = "New"
     }
     
     // MARK: UITableView
@@ -95,25 +95,30 @@ class EpisodesController: UITableViewController {
         return episodes.isEmpty ? 200 : 0
     }
     
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let downloadAction = UIContextualAction(style: .normal, title: "Download") { _, _, completion in
+            let episode = self.episodes[indexPath.row]
+            UserDefaults.standard.downloadEpisode(episode: episode)
+            self.showBadgeHighlight(page: 2)
+            
+            APIService.shared.donwloadEpisode(episode: episode)
+            completion(true)
+        }
+
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [downloadAction])
+        return swipeConfiguration
+    }
+    
     // MARK: Selector
     @objc func handleSaveFavorite() {
         guard let podcast = self.podcasts else { return }
         
         var listOfPodcast = UserDefaults.standard.savedPodcasts()
         listOfPodcast.append(podcast)
-        let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcast)
+        let data = try? NSKeyedArchiver.archivedData(withRootObject: listOfPodcast, requiringSecureCoding: false)
         
         UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
-        showBadgeHighlight()
+        showBadgeHighlight(page: 0)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: nil, action: nil)
-    }
-    
-    @objc func handleFetchSavedFavorites() {
-        guard let data = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey ) else { return }
-        let podcast = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Podcast]
-        
-        podcast?.forEach({ p in
-            print(p.trackName ?? "", p.artistName ?? "")
-        })
     }
 }
